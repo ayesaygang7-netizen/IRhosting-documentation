@@ -36,7 +36,7 @@ body {
 }
 
 main {
-  background-color: #495057 !important; /* اولویت بیشتر برای بک‌گراند */
+background: linear-gradient(180deg, #333333, #4f4f4f, #666666) !important; /* اولویت بیشتر برای بک‌گراند */
   color: white;
   text-align: right;
   font-family: 'Vazir', sans-serif;

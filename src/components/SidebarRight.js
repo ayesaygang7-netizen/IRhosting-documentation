@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-scroll'; // وارد کردن کتابخانه react-scroll
 
 export default function SidebarRight() {
   return (
@@ -15,21 +16,25 @@ export default function SidebarRight() {
       }}
     >
       <h5 className="mb-4 border-bottom pb-2 text-center">منوی مستندات</h5>
-      <nav className="nav flex-column gap-2"> {/* gap برای فاصله بین آیتم‌ها */}
+      <nav className="nav flex-column gap-2">
         {[
-          { href: '#introduction', label: 'سرور ابری' },
-          { href: '#cloud', label: ' سرور اختصاصی' },
-          { href: '#pricing', label: 'فضای ابری' },
-          { href: '#support', label: 'پشتیبانی' },
-        ].map(({ href, label }) => (
-          <a
-            key={href}
-            href={href}
+          // { to: 'introduction', label: 'خوش آمد گویی' },  // اصلاح این قسمت
+          { to: 'cloud-server', label: 'سرور ابری' },
+          { to: 'cloud', label: 'فضای ابری' },
+          { to: 'dedicated-server', label: 'سرور اختصاصی' },
+          { to: 'support', label: 'پشتیبانی' },
+        ].map(({ to, label }) => (
+          <Link
+            key={to}
+            to={to}
+            smooth={true}  // فعال‌سازی اسکرول نرم
+            duration={400} // مدت زمان اسکرول سریع‌تر (400 میلی‌ثانیه)
+            offset={-56}   // جبران فضای Navbar
             className="nav-link text-white rounded text-center p-2"
             style={{ cursor: 'pointer' }}
           >
             {label}
-          </a>
+          </Link>
         ))}
       </nav>
 
@@ -39,7 +44,7 @@ export default function SidebarRight() {
         }
         a.nav-link:hover,
         a.nav-link:focus {
-          background-color: #0d6efd;  /* رنگ آبی بوت‌استرپ */
+          background-color: #0d6efd;
           color: white !important;
           text-decoration: none;
         }
