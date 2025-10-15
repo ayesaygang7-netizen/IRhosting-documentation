@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-scroll'; // وارد کردن کتابخانه react-scroll
+import { Link } from 'react-scroll';
 
 export default function SidebarRight() {
   return (
@@ -13,7 +13,7 @@ export default function SidebarRight() {
         height: 'calc(100vh - 56px)',
         overflowY: 'auto',
         zIndex: 1000,
-        backgroundColor: '#001845',  // اعمال رنگ پس‌زمینه جدید
+        backgroundColor: '#0d1b2a', // رنگ سورمه‌ای تیره
       }}
     >
       <h5 className="mb-4 border-bottom pb-2 text-center">منوی مستندات</h5>
@@ -30,7 +30,7 @@ export default function SidebarRight() {
             smooth={true}
             duration={400}
             offset={-56}
-            className="nav-link text-white rounded text-center p-2"
+            className="nav-link text-white rounded text-center p-2 custom-sidebar-link"
             style={{ cursor: 'pointer' }}
           >
             {label}
@@ -39,11 +39,13 @@ export default function SidebarRight() {
       </nav>
 
       <style jsx>{`
-        a.nav-link {
+        .custom-sidebar-link {
+          font-size: 1.1rem; /* بزرگ‌تر کردن فونت */
           transition: background-color 0.3s ease, color 0.3s ease;
         }
-        a.nav-link:hover,
-        a.nav-link:focus {
+
+        .custom-sidebar-link:hover,
+        .custom-sidebar-link:focus {
           background-color: #0d6efd;
           color: white !important;
           text-decoration: none;
