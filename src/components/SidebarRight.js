@@ -17,9 +17,9 @@ export default function SidebarRight() {
       <h5 className="mb-4 border-bottom pb-2 text-center">منوی مستندات</h5>
       <nav className="nav flex-column gap-2"> {/* gap برای فاصله بین آیتم‌ها */}
         {[
-          { href: '#introduction', label: 'معرفی' },
-          { href: '#cloud', label: 'فضای ابری' },
-          { href: '#pricing', label: 'قیمت‌گذاری' },
+          { href: '#introduction', label: 'سرور ابری' },
+          { href: '#cloud', label: ' سرور اختصاصی' },
+          { href: '#pricing', label: 'فضای ابری' },
           { href: '#support', label: 'پشتیبانی' },
         ].map(({ href, label }) => (
           <a
