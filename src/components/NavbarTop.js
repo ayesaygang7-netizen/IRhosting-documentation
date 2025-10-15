@@ -5,7 +5,7 @@ export default function NavbarTop() {
     <>
       <nav
         className="navbar navbar-expand-lg navbar-dark fixed-top px-3 shadow-sm"
-        style={{ backgroundColor: '#121623' }} // رنگ دلخواه برای بک‌گراند نوبار
+        style={{ backgroundColor: '#001845' }} // رنگ دلخواه برای بک‌گراند نوبار
       >
         {/* منو سمت چپ */}
         <div className="collapse navbar-collapse" id="navbarNav">
@@ -35,7 +35,7 @@ export default function NavbarTop() {
 
         {/* برند سمت راست */}
         <a className="navbar-brand fw-bold ms-auto text-white custom-brand" href="#">
-          🇮🇷 ایران هاستینگ ۲۴
+          🇮🇷 Hostin 24
         </a>
 
         <button
