@@ -3,7 +3,10 @@ import React from 'react';
 export default function NavbarTop() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top px-3 shadow-sm">
+      <nav
+        className="navbar navbar-expand-lg navbar-dark fixed-top px-3 shadow-sm"
+        style={{ backgroundColor: '#121623' }} // رنگ دلخواه برای بک‌گراند نوبار
+      >
         {/* منو سمت چپ */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto gap-3">

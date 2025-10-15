@@ -13,7 +13,7 @@ export default function SidebarRight() {
         height: 'calc(100vh - 56px)',
         overflowY: 'auto',
         zIndex: 1000,
-        backgroundColor: '#0d1b2a', // رنگ سورمه‌ای تیره
+        backgroundColor: '#04052e', // رنگ سورمه‌ای تیره
       }}
     >
       <h5 className="mb-4 border-bottom pb-2 text-center">منوی مستندات</h5>
