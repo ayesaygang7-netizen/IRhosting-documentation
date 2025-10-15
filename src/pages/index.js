@@ -10,17 +10,17 @@ const ToggleSection = ({ section, showText, toggleText, title, description, extr
       <button
         onClick={() => toggleText(section)}
         style={{
-          backgroundColor: '#333333', // رنگ دکمه مشکی تیره
+          backgroundColor: 'white', // پس‌زمینه سفید
           border: 'none',
           padding: '10px 20px',
           borderRadius: '5px',
-          color: 'white',
+          color: '#273469', // رنگ متن آبی
           cursor: 'pointer',
           marginTop: '10px',
           transition: 'background-color 0.3s ease, transform 0.2s ease',
         }}
-        onMouseEnter={(e) => e.target.style.backgroundColor = '#444444'} // رنگ روی هاور
-        onMouseLeave={(e) => e.target.style.backgroundColor = '#333333'} // بازگشت به رنگ اولیه
+        onMouseEnter={(e) => e.target.style.backgroundColor = '#e1e5f0'} // هاور آبی روشن
+        onMouseLeave={(e) => e.target.style.backgroundColor = 'white'}
       >
         {showText[section] ? 'نمایش کمتر' : 'توضیحات بیشتر'}
       </button>
@@ -58,7 +58,7 @@ export default function Home() {
           marginTop: '56px',
           padding: '40px 30px',
           minHeight: '100vh',
-          backgroundColor: '#000000', // رنگ پس‌زمینه مشکی
+          backgroundColor: '#000000', // پس‌زمینه مشکی
           color: 'white',
           textAlign: 'right',
           fontFamily: "'Vazir', sans-serif",
@@ -85,17 +85,17 @@ export default function Home() {
           <button
             onClick={() => toggleText('cloudSpace')}
             style={{
-              backgroundColor: '#333333',
+              backgroundColor: 'white',
               border: 'none',
               padding: '10px 20px',
               borderRadius: '5px',
-              color: 'white',
+              color: '#273469',
               cursor: 'pointer',
               marginTop: '10px',
               transition: 'background-color 0.3s ease, transform 0.2s ease',
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333333'}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#e1e5f0'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'white'}
           >
             {showText.cloudSpace ? 'نمایش کمتر' : 'توضیحات بیشتر'}
           </button>
@@ -106,6 +106,14 @@ export default function Home() {
           )}
         </section>
 
+                  <ToggleSection
+          section="dedicatedServer"
+          showText={showText}
+          toggleText={toggleText}
+          title="🖥️ سرور اختصاصی"
+          description="سرورهای اختصاصی ما برای کسب‌وکارهایی طراحی شده است که نیاز به منابع محاسباتی بسیار بالا و کنترل کامل بر روی سرور خود دارند."
+          extraText="سرورهای اختصاصی ما به‌طور کامل قابل تنظیم و شخصی‌سازی هستند و به شما این امکان را می‌دهند که هرگونه نیاز خاص خود را برآورده کنید. همچنین، امنیت این سرورها به‌طور کامل تأمین شده و شما از مدیریت کامل بر روی تمامی جنبه‌های سرور برخوردار خواهید بود."
+        />
 
         {/* بخش‌های دیگر */}
         <ToggleSection
@@ -117,14 +125,7 @@ export default function Home() {
           extraText="سرورهای ابری ما با امکاناتی مانند دسترسی ۲۴/۷، مقیاس‌پذیری نامحدود و پشتیبانی عالی آماده خدمت‌رسانی به شما هستند. ما با استفاده از آخرین تکنولوژی‌ها، از جمله دیتاسنترهای پیشرفته و قابلیت‌های امنیتی بی‌نظیر، به شما این امکان را می‌دهیم که از سرویس‌های ابری با بالاترین سطح کارایی و امنیت بهره‌مند شوید."
         />
         
-        <ToggleSection
-          section="dedicatedServer"
-          showText={showText}
-          toggleText={toggleText}
-          title="🖥️ سرور اختصاصی"
-          description="سرورهای اختصاصی ما برای کسب‌وکارهایی طراحی شده است که نیاز به منابع محاسباتی بسیار بالا و کنترل کامل بر روی سرور خود دارند."
-          extraText="سرورهای اختصاصی ما به‌طور کامل قابل تنظیم و شخصی‌سازی هستند و به شما این امکان را می‌دهند که هرگونه نیاز خاص خود را برآورده کنید. همچنین، امنیت این سرورها به‌طور کامل تأمین شده و شما از مدیریت کامل بر روی تمامی جنبه‌های سرور برخوردار خواهید بود."
-        />
+
         
         <ToggleSection
           section="support"

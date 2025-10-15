@@ -4,7 +4,7 @@ import { Link } from 'react-scroll'; // وارد کردن کتابخانه react
 export default function SidebarRight() {
   return (
     <aside
-      className="bg-dark text-white border-start p-3"
+      className="text-white border-start p-3"
       style={{
         width: '260px',
         position: 'fixed',
@@ -13,12 +13,12 @@ export default function SidebarRight() {
         height: 'calc(100vh - 56px)',
         overflowY: 'auto',
         zIndex: 1000,
+        backgroundColor: '#001845',  // اعمال رنگ پس‌زمینه جدید
       }}
     >
       <h5 className="mb-4 border-bottom pb-2 text-center">منوی مستندات</h5>
       <nav className="nav flex-column gap-2">
         {[
-          // { to: 'introduction', label: 'خوش آمد گویی' },  // اصلاح این قسمت
           { to: 'cloud-server', label: 'سرور ابری' },
           { to: 'cloud', label: 'فضای ابری' },
           { to: 'dedicated-server', label: 'سرور اختصاصی' },
@@ -27,9 +27,9 @@ export default function SidebarRight() {
           <Link
             key={to}
             to={to}
-            smooth={true}  // فعال‌سازی اسکرول نرم
-            duration={400} // مدت زمان اسکرول سریع‌تر (400 میلی‌ثانیه)
-            offset={-56}   // جبران فضای Navbar
+            smooth={true}
+            duration={400}
+            offset={-56}
             className="nav-link text-white rounded text-center p-2"
             style={{ cursor: 'pointer' }}
           >
