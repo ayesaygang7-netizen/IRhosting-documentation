@@ -1,87 +1,71 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* @import ها */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css');
-@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css"; /* دوباره بوت استرپ */
 
-/* You can override the default Infima variables here. */
+/* رنگ و استایل‌های اصلی */
 :root {
-  --ifm-color-primary: #5bc0be;      /* جایگزین #2e8555 */
-  --ifm-color-primary-dark: #3a506b; /* جایگزین #29784c */
-  --ifm-color-primary-darker: #3a506b; /* جایگزین #277148 */
-  --ifm-color-primary-darkest: #0b132b; /* جایگزین #205d3b */
-  --ifm-color-primary-light: #1c2541; /* جایگزین #33925d */
-  --ifm-color-primary-lighter: #1c2541; /* جایگزین #359962 */
-  --ifm-color-primary-lightest: #5bc0be; /* جایگزین #3cad6e */
+  --ifm-color-primary: #5bc0be; /* رنگ اصلی */
+  --ifm-color-primary-dark: #3a506b;
+  --ifm-color-primary-darker: #3a506b;
+  --ifm-color-primary-darkest: #0b132b;
+  --ifm-color-primary-light: #1c2541;
+  --ifm-color-primary-lighter: #1c2541;
+  --ifm-color-primary-lightest: #5bc0be;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #5bc0be;      /* جایگزین #25c2a0 */
-  --ifm-color-primary-dark: #3a506b; /* جایگزین #21af90 */
-  --ifm-color-primary-darker: #3a506b; /* جایگزین #1fa588 */
-  --ifm-color-primary-darkest: #0b132b; /* جایگزین #1a8870 */
-  --ifm-color-primary-light: #1c2541; /* جایگزین #29d5b0 */
-  --ifm-color-primary-lighter: #1c2541; /* جایگزین #32d8b4 */
-  --ifm-color-primary-lightest: #5bc0be; /* جایگزین #4fddbf */
+  --ifm-color-primary: #5bc0be;  /* تغییر رنگ در تم تاریک */
+  --ifm-color-primary-dark: #3a506b;
+  --ifm-color-primary-darker: #3a506b;
+  --ifm-color-primary-darkest: #0b132b;
+  --ifm-color-primary-light: #1c2541;
+  --ifm-color-primary-lighter: #1c2541;
+  --ifm-color-primary-lightest: #5bc0be;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-}
-body {
-  font-family: 'Vazir', sans-serif;
 }
 
 body {
   font-family: 'Vazir', sans-serif;
-  background-color: #003554; /* رنگ بک‌گراند تغییر کرد */
+  background-color: #37474f !important; /* اولویت بیشتر با !important */
   color: #ffffff;
   margin: 0;
   padding: 0;
 }
 
-.lead {
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: #5bc0be; /* جایگزین #ddd */
-}
-
-a.nav-link.active {
-  font-weight: 600;
-  color: #5bc0be !important; /* جایگزین #337ce9 */
-}
 main {
-  direction: rtl;
+  background-color: #495057 !important; /* اولویت بیشتر برای بک‌گراند */
+  color: white;
   text-align: right;
-  line-height: 1.8; /* افزایش فاصله بین خطوط برای بهتر خواندن */
-  font-size: 1.1rem;
-  color: #3a506b; /* جایگزین #ccc */
+  font-family: 'Vazir', sans-serif;
   padding: 40px 30px;
+  min-height: 100vh;
 }
 
-/* فاصله استاندارد بین هر بخش */
 main section {
   margin-bottom: 50px;
-  border-bottom: 1px solid #1c2541; /* جایگزین #444 */
   padding-bottom: 30px;
+  border-bottom: 1px solid #1c2541;
 }
 
-/* استایل عنوان‌ها داخل main */
 main section h1,
 main section h2 {
-  color: #5bc0be; /* جایگزین #fff */
+  color: #5bc0be; /* رنگ عنوان‌ها */
   margin-bottom: 15px;
   font-weight: 700;
 }
-/*aaaaa
 
-/* پاراگراف‌ها */
 main section p {
   margin: 0;
-  color: #5bc0be; /* جایگزین #ddd */
+  color: #5bc0be; /* رنگ پاراگراف‌ها */
   line-height: 1.9;
   font-size: 1.1rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #5bc0be;
 }

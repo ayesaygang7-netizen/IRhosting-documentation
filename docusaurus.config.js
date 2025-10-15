@@ -10,9 +10,8 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
-  // GitHub pages deployment config.
-  organizationName: 'iranhosting24', // Usually your GitHub org/user name.
-  projectName: 'iranhosting24', // Usually your repo name.
+  organizationName: 'iranhosting24',
+  projectName: 'iranhosting24',
 
   i18n: {
     defaultLocale: 'fa',
@@ -85,13 +84,13 @@ const config = {
       },
     }),
 
-  // ✅ اضافه کردن Bootstrap JS به <head>
+  // ✅ اصلاح‌شده: مقدار defer به صورت رشته
   headTags: [
     {
       tagName: 'script',
       attributes: {
         src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
-        defer: true,
+        defer: 'true', // 👈 این درستشه
       },
     },
   ],
