@@ -76,7 +76,7 @@ export default function Documentation() {
       >
         <h4
           style={{
-            color: "#2081c3",
+            color: "#00AAFF",
             fontSize: isMobile ? "1.6rem" : "2.1rem",
             marginBottom: "25px",
           }}

@@ -254,7 +254,7 @@ export default function Security() {
 // 🎨 استایل‌ها
 const breadcrumbLink = { color: '#9AD0FF', cursor: 'pointer' };
 const sectionStyle = { maxWidth: '900px', margin: '0 auto 60px auto' };
-const titleStyle = { fontSize: '2rem', color: '#5C87F4', marginBottom: '20px' };
+const titleStyle = { fontSize: '2rem', color: '#00AAFF', marginBottom: '20px' };
 const subtitleStyle = { fontSize: '1.6rem', color: 'white', marginBottom: '15px' };
 const paragraphStyle = { fontSize: '1rem', lineHeight: '1.9', color: '#e5e7eb' };
 const tipBoxStyle = {
