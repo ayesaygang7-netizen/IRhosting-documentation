@@ -6,7 +6,6 @@ import Footer from "../components/footer";
 export default function Documentation() {
   const rightSidebarWidth = 260;
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 900);
@@ -19,46 +18,8 @@ export default function Documentation() {
       {/* ✅ نوبار بالا */}
       <NavbarTop />
 
-      {/* ✅ سایدبار راست (دسکتاپ همیشه نمایش داده می‌شود) */}
-      <aside
-        style={{
-          position: "fixed",
-          top: "56px",
-          right: isMobile ? (isSidebarVisible ? "0" : `-${rightSidebarWidth}px`) : "0",
-          width: `${rightSidebarWidth}px`,
-          height: "calc(100vh - 56px)",
-          backgroundColor: "#0B0F1A",
-          borderLeft: "1px solid #050a13",
-          overflowY: "auto",
-          transition: "right 0.3s ease-in-out",
-          zIndex: 1000,
-        }}
-      >
-        <SidebarRight />
-      </aside>
-
-      {/* ✅ دکمه باز و بسته کردن سایدبار در موبایل */}
-      {isMobile && (
-        <button
-          onClick={() => setIsSidebarVisible(!isSidebarVisible)}
-          style={{
-            position: "fixed",
-            top: "65px",
-            right: "15px",
-            backgroundColor: "#0d6efd",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            padding: "8px 12px",
-            fontSize: "1.3rem",
-            zIndex: 1101,
-            cursor: "pointer",
-            transition: "background-color 0.3s ease",
-          }}
-        >
-          ☰
-        </button>
-      )}
+      {/* ✅ سایدبار راست (خودش position: fixed داره، نیازی به aside جدا نیست) */}
+      <SidebarRight />
 
       {/* ✅ محتوای اصلی */}
       <main
@@ -121,8 +82,8 @@ export default function Documentation() {
         }
 
         @media (max-width: 900px) {
-          aside {
-            box-shadow: -3px 0 15px rgba(0, 0, 0, 0.6);
+          body {
+            background-color: #000000;
           }
         }
       `}</style>
