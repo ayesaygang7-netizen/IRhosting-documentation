@@ -9,11 +9,20 @@ const rightSidebarWidth = 260;
 export default function Security() {
   const [isAtBottom, setIsAtBottom] = useState(false);
   const [currentPath, setCurrentPath] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
   const pageOrder = docsPageOrder;
 
   useEffect(() => {
     setCurrentPath(window?.location?.pathname || null);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const currentIndex = currentPath ? pageOrder.indexOf(currentPath) : -1;
@@ -31,11 +40,7 @@ export default function Security() {
     };
     handleScroll();
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const goToPage = (url) => {
@@ -63,48 +68,78 @@ export default function Security() {
       <NavbarTop />
       <SidebarRight />
 
-      {/* ✅ سایدبار چپ */}
-      <aside
-        style={{
-          position: 'fixed',
-          top: '56px',
-          left: 0,
-          height: 'calc(100vh - 56px)',
-          width: `${leftSidebarWidth}px`,
-          backgroundColor: '#0f121a',
-          borderRight: '1px solid #0f121a',
-          padding: '20px 15px',
-          color: 'white',
-          fontFamily: "'Vazir', sans-serif",
-          fontSize: '0.85rem',
-          textAlign: 'right',
-          direction: 'rtl',
-          overflowY: 'auto',
-          zIndex: 1000,
-        }}
-      >
-        <h6 style={{ color: '#9AD0FF', textAlign: 'center', marginBottom: '12px' }}>
-          فهرست امنیت
-        </h6>
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2 }}>
-          <li style={sidebarLinkStyle} onClick={() => scrollToSection('security-intro')}>
-            مقدمه
-          </li>
-          <li style={sidebarLinkStyle} onClick={() => scrollToSection('security-measures')}>
-            اقدامات امنیتی
-          </li>
-          <li style={sidebarLinkStyle} onClick={() => scrollToSection('security-user')}>
-            مسئولیت کاربر
-          </li>
-        </ul>
-      </aside>
+      {/* ✅ سایدبار چپ فقط در حالت دسکتاپ */}
+      {!isMobile && (
+        <aside
+          style={{
+            position: 'fixed',
+            top: '56px',
+            left: 0,
+            height: 'calc(100vh - 56px)',
+            width: `${leftSidebarWidth}px`,
+            backgroundColor: '#0f121a',
+            borderRight: '1px solid #0f121a',
+            padding: '20px 15px',
+            color: 'white',
+            fontFamily: "'Vazir', sans-serif",
+            fontSize: '0.85rem',
+            textAlign: 'right',
+            direction: 'rtl',
+            overflowY: 'auto',
+            zIndex: 1000,
+          }}
+        >
+          {/* <h6 style={{ color: '#9AD0FF', textAlign: 'center', marginBottom: '12px' }}>
+            فهرست امنیت
+          </h6> */}
+          <ul className="left-sidebar-list">
+            <li onClick={() => scrollToSection('security-intro')}>مقدمه</li>
+            <li onClick={() => scrollToSection('security-measures')}>اقدامات امنیتی</li>
+            <li onClick={() => scrollToSection('security-user')}>مسئولیت کاربر</li>
+          </ul>
+
+          {/* 🎨 استایل hover حرفه‌ای */}
+          <style jsx>{`
+            .left-sidebar-list {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            }
+            .left-sidebar-list li {
+              color: #ffffff;
+              padding: 6px 8px;
+              cursor: pointer;
+              position: relative;
+              transition: all 0.3s ease;
+            }
+            .left-sidebar-list li::before {
+              content: '';
+              position: absolute;
+              right: 0;
+              top: 0;
+              height: 100%;
+              width: 3px;
+              background-color: transparent;
+              transition: all 0.3s ease;
+              border-radius: 3px;
+            }
+            .left-sidebar-list li:hover {
+              color: #5c87f4;
+              transform: translateX(-4px);
+            }
+            .left-sidebar-list li:hover::before {
+              background-color: #5c87f4;
+            }
+          `}</style>
+        </aside>
+      )}
 
       {/* ✅ محتوای اصلی */}
       <main
         style={{
-          marginRight: `${rightSidebarWidth}px`,
-          marginLeft: `${leftSidebarWidth}px`,
-          padding: '80px 40px 180px 40px',
+          marginRight: isMobile ? '0' : `${rightSidebarWidth}px`,
+          marginLeft: isMobile ? '0' : `${leftSidebarWidth}px`,
+          padding: isMobile ? '80px 20px 160px 20px' : '80px 40px 180px 40px',
           backgroundColor: '#0F121A',
           color: 'white',
           minHeight: '100vh',
@@ -113,7 +148,7 @@ export default function Security() {
           textAlign: 'right',
         }}
       >
-        {/* ✅ رودبرد قابل کلیک */}
+        {/* ✅ رودبرد */}
         <div
           style={{
             color: '#9AD0FF',
@@ -131,55 +166,49 @@ export default function Security() {
           </span>
           {' / '}
           <span style={{ ...breadcrumbLink, color: '#fff', cursor: 'default' }}>
-            امنیت
-          </span>
+پشتیبانی          </span>
           {' / '}
-           <span style={{ ...breadcrumbLink, color: '#fff', cursor: 'default' }}>
-            اتصال
+          <span style={{ ...breadcrumbLink, color: '#fff', cursor: 'default' }}>
+            مدیریت دیسک
           </span>
-          
         </div>
 
-        {/* 📘 بخش‌ها */}
+        {/* 📘 محتوا */}
         <section id="security-intro" style={sectionStyle}>
           <h2 style={titleStyle}>۱. امنیت در فضای ابری</h2>
           <p style={paragraphStyle}>
-            امنیت یکی از مهم‌ترین دغدغه‌ها در زیرساخت‌های ابری است. تمام سیستم‌ها و سرورها
-            به‌صورت مداوم نظارت و به‌روزرسانی می‌شوند تا سطح امنیت در بالاترین میزان ممکن حفظ
-            شود.
+            امنیت یکی از مهم‌ترین دغدغه‌ها در زیرساخت‌های ابری است...
           </p>
         </section>
 
         <section id="security-measures" style={sectionStyle}>
           <h3 style={subtitleStyle}>اقدامات امنیتی</h3>
           <p style={paragraphStyle}>
-            ما از ترکیبی از روش‌های مدرن امنیتی شامل فایروال‌های هوشمند، رمزنگاری ارتباطات و
-            سیستم‌های تشخیص نفوذ استفاده می‌کنیم. همچنین بررسی‌های امنیتی به‌صورت مداوم انجام
-            می‌شود تا از هرگونه نفوذ جلوگیری شود.
+            ما از ترکیبی از روش‌های مدرن امنیتی شامل فایروال‌های هوشمند...
           </p>
-
           <div style={tipBoxStyle}>
             <h4 style={{ color: '#9AD0FF', marginBottom: '10px' }}>نکته امنیتی</h4>
-            <p style={paragraphStyle}>
-              در صورت نیاز به باز کردن پورت جدید، از طریق بخش «مدیریت فایروال» اقدام کنید و
-              تنها پورت‌های ضروری را باز نگه دارید.
-            </p>
+            <p style={paragraphStyle}>فقط پورت‌های ضروری را باز نگه دارید.</p>
           </div>
         </section>
 
         <section id="security-user" style={sectionStyle}>
           <h3 style={subtitleStyle}>مسئولیت‌های کاربر</h3>
           <p style={paragraphStyle}>
-            کاربران موظف‌اند از رمزهای عبور قوی و غیرقابل حدس استفاده کنند، از اشتراک‌گذاری
-            اطلاعات حساس خودداری کرده و سیستم‌های خود را به‌روز نگه دارند. همچنین توصیه می‌شود
-            از احراز هویت دو مرحله‌ای برای دسترسی به پنل استفاده شود.
+            کاربران باید رمز عبور قوی و احراز هویت دو مرحله‌ای استفاده کنند.
           </p>
         </section>
       </main>
 
-      {/* ✅ ناوبری پایین */}
+      {/* ✅ دکمه‌های قبلی / بعدی */}
       {isAtBottom && (
-        <div style={bottomNavStyle}>
+        <div
+          style={{
+            ...bottomNavStyle,
+            left: isMobile ? '20px' : `${leftSidebarWidth + 30}px`,
+            right: isMobile ? '20px' : `${rightSidebarWidth + 30}px`,
+          }}
+        >
           <div style={{ textAlign: 'center' }}>
             <button
               onClick={() => goToPage(prevPage)}
@@ -222,17 +251,7 @@ export default function Security() {
 }
 
 // 🎨 استایل‌ها
-const breadcrumbLink = {
-  color: '#9AD0FF',
-  cursor: 'pointer',
-  transition: 'color 0.3s ease',
-};
-const sidebarLinkStyle = {
-  padding: '6px 0',
-  cursor: 'pointer',
-  color: '#9AD0FF',
-  transition: 'color 0.3s ease',
-};
+const breadcrumbLink = { color: '#9AD0FF', cursor: 'pointer' };
 const sectionStyle = { maxWidth: '900px', margin: '0 auto 60px auto' };
 const titleStyle = { fontSize: '2rem', color: '#5C87F4', marginBottom: '20px' };
 const subtitleStyle = { fontSize: '1.6rem', color: 'white', marginBottom: '15px' };
@@ -247,8 +266,6 @@ const tipBoxStyle = {
 const bottomNavStyle = {
   position: 'fixed',
   bottom: '25px',
-  left: `${leftSidebarWidth + 30}px`,
-  right: `${rightSidebarWidth + 30}px`,
   backgroundColor: '#071025',
   border: '1px solid rgba(30,58,138,0.25)',
   borderRadius: '10px',
